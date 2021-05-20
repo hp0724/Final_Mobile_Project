@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "454465658957",
+    "project_id": "reservation-1c362",
+    "storage_bucket": "reservation-1c362.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454465658957:android:ff576214fb703d74037c04",
+        "android_client_info": {
+          "package_name": "ddwu.mobile.finalproject.ma01_20180943"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454465658957-5ldbqrsgugbdk0p95d4i9sbu5aigt65e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZNDmzRQ8JbU_muWUcNlcqBRKUmzQHJok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454465658957-5ldbqrsgugbdk0p95d4i9sbu5aigt65e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454465658957:android:5ab219130fa58fdf037c04",
+        "android_client_info": {
+          "package_name": "gachon.mpclass.final_mobile_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454465658957-5ldbqrsgugbdk0p95d4i9sbu5aigt65e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZNDmzRQ8JbU_muWUcNlcqBRKUmzQHJok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454465658957-5ldbqrsgugbdk0p95d4i9sbu5aigt65e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
