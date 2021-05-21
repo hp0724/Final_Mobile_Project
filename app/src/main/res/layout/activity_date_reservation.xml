@@ -11,12 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="연극제목"
+        android:textStyle="bold"
+        android:fontFamily="@font/cafe24oneprettynight"
+        android:textAlignment="center"
+
         android:textSize="15pt"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="날짜"
+        android:textStyle="bold"
+        android:fontFamily="@font/cafe24oneprettynight"
         android:textSize="8pt"
         android:layout_gravity="center"
         android:layout_margin="3dp"/>
@@ -34,6 +40,8 @@
             android:textSize="8pt"
             android:layout_weight="1"
             android:textAlignment="center"
+            android:textStyle="bold"
+            android:fontFamily="@font/cafe24oneprettynight"
             android:text="날짜 표시" />
 
         <Button
@@ -44,6 +52,8 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="달력"
+            android:textStyle="bold"
+            android:fontFamily="@font/cafe24oneprettynight"
             app:backgroundTint="@color/blue" />
 
     </LinearLayout>
@@ -53,6 +63,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="극장"
+        android:textStyle="bold"
+        android:fontFamily="@font/cafe24oneprettynight"
+        android:textAlignment="center"
         android:textSize="10pt"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,6 +78,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="시간"
+            android:textStyle="bold"
+            android:fontFamily="@font/cafe24oneprettynight"
             app:backgroundTint="@color/blue" />
 
 

@@ -42,41 +42,41 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_mainTitle" />
 
-            <Button
-                android:id="@+id/btn_showSearch"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:onClick="onClick"
-                android:text="공연 검색"
-                android:background="@drawable/custom_button"
-                android:backgroundTint="@color/blue"
-                android:fontFamily="@font/cafe24oneprettynight"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_map" />
+<!--            <Button-->
+<!--                android:id="@+id/tv_mainTitle"-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:onClick="onClick"-->
+<!--                android:text="공연 검색"-->
+<!--                android:background="@drawable/custom_button"-->
+<!--                android:backgroundTint="@color/blue"-->
+<!--                android:fontFamily="@font/cafe24oneprettynight"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/btn_map" />-->
 
-            <Button
-                android:id="@+id/btn_mainBm"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:onClick="onClick"
-                android:text="즐겨찾기"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_showSearch" />
+<!--            <Button-->
+<!--                android:id="@+id/btn_mainBm"-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:onClick="onClick"-->
+<!--                android:text="즐겨찾기"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/btn_showSearch" />-->
 
-            <Button
-                android:id="@+id/btn_main_review"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:onClick="onClick"
-                android:text="나의 리뷰"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_mainBm" />
+<!--            <Button-->
+<!--                android:id="@+id/btn_main_review"-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:onClick="onClick"-->
+<!--                android:text="나의 리뷰"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/btn_mainBm" />-->
 
             <TextView
                 android:id="@+id/tv_mainTitle"
@@ -89,11 +89,10 @@
                 android:layout_marginRight="16dp"
                 android:gravity="center_horizontal"
                 android:padding="20dp"
-                android:text="연극 검색"
-                android:background="@drawable/custom_button"
+                android:text="어플 제목"
                 android:backgroundTint="@color/blue"
                 android:fontFamily="@font/cafe24oneprettynight"
-                android:textColor="#2B2B2B"
+                android:textColor="@color/black"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -11,14 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="날짜"
+        android:textStyle="bold"
+        android:fontFamily="@font/cafe24oneprettynight"
         android:gravity="center"
         android:textSize="15pt"/>
     <TextView
         android:id="@+id/seat_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10pt"
+        android:textSize="15pt"
+        android:textStyle="bold"
         android:gravity="center"
+        android:fontFamily="@font/cafe24oneprettynight"
         android:text="시간"/>
 
     <LinearLayout
@@ -32,6 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-"
+            android:background="@drawable/custom_button"
+            android:fontFamily="@font/cafe24oneprettynight"
             app:backgroundTint="@color/blue" />
 
         <TextView
@@ -41,13 +47,16 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="10pt"
+            android:fontFamily="@font/cafe24oneprettynight"
             android:text="0"/>
 
         <Button
             android:id="@+id/plus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:background="@drawable/custom_button"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/cafe24oneprettynight"
             android:text="+"
             app:backgroundTint="@color/blue" />
 
@@ -59,6 +68,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="8pt"
+        android:fontFamily="@font/cafe24oneprettynight"
+        android:layout_gravity="center"
+        android:textStyle="bold"
         android:text="극장/날짜/시간/좌석정보"/>
 
     <Button
@@ -67,6 +79,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="예매하기"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/cafe24oneprettynight"
         app:backgroundTint="@color/blue" />
 
 

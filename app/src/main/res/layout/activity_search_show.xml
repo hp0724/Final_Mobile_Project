@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:onClick="onClick"
-        android:text="공연장 위치"
+        android:text="뒤로 가기"
         android:background="@drawable/custom_button"
         android:backgroundTint="@color/blue"
         android:fontFamily="@font/cafe24oneprettynight"
