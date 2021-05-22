@@ -44,6 +44,7 @@ import gachon.mpclass.final_mobile_project.Manager.NetworkManager;
 import gachon.mpclass.final_mobile_project.R;
 import gachon.mpclass.final_mobile_project.Review.AddReviewActivity;
 import gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
+import gachon.mpclass.final_mobile_project.reservation.Date_reservation;
 import gachon.mpclass.final_mobile_project.reservation.ReservationActivity;
 
 public class DetailShowActivity extends AppCompatActivity {
@@ -88,8 +89,8 @@ public class DetailShowActivity extends AppCompatActivity {
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         createNotificationChannel();
 
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.detail_map);
-        mapFragment.getMapAsync(mapReadyCallBack);
+//        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.detail_map);
+//        mapFragment.getMapAsync(mapReadyCallBack);
 
         title = findViewById(R.id.tv_detailTitle);
         place = findViewById(R.id.tv_detailPlace);
@@ -105,7 +106,7 @@ public class DetailShowActivity extends AppCompatActivity {
 
         detail = (gachon.mpclass.final_mobile_project.Show.ShowDto) getIntent().getSerializableExtra("detailDto");
 
-        btn_bookmark = findViewById(R.id.btn_add_bookmark);
+//        btn_bookmark = findViewById(R.id.btn_add_bookmark);
         if (dbManager.existingBookmark(detail.getSeq())) {
             btn_bookmark.setText("즐겨찾기 해제");
         }
@@ -186,32 +187,32 @@ public class DetailShowActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_add_review:
-                Intent intent = new Intent(this, AddReviewActivity.class);
-                intent.putExtra("title", detail.getTitle(false));
-                startActivity(intent);
-                break;
-            case R.id.btn_add_bookmark:
-                if (btn_bookmark.getText().equals("즐겨찾기")) {
-                    boolean result = dbManager.addBookmark(detail);
-                    if (result) {
-                        Toast.makeText(this, "즐겨찾기 추가 성공", Toast.LENGTH_SHORT).show();
-                        btn_bookmark.setText("즐겨찾기 해제");
-                    } else {
-                        Toast.makeText(this, "즐겨찾기 추가 실패", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    boolean result = dbManager.removeBookmark(detail.getSeq());
-                    if (result) {
-                        Toast.makeText(this, "즐겨찾기 해제 성공", Toast.LENGTH_SHORT).show();
-                        btn_bookmark.setText("즐겨찾기");
-                    } else {
-                        Toast.makeText(this, "즐겨찾기 해제 실패", Toast.LENGTH_SHORT).show();
-                    }
-                }
+//            case R.id.btn_add_review:
+//                Intent intent = new Intent(this, AddReviewActivity.class);
+//                intent.putExtra("title", detail.getTitle(false));
+//                startActivity(intent);
+//                break;
+//            case R.id.btn_add_bookmark:
+//                if (btn_bookmark.getText().equals("즐겨찾기")) {
+//                    boolean result = dbManager.addBookmark(detail);
+//                    if (result) {
+//                        Toast.makeText(this, "즐겨찾기 추가 성공", Toast.LENGTH_SHORT).show();
+//                        btn_bookmark.setText("즐겨찾기 해제");
+//                    } else {
+//                        Toast.makeText(this, "즐겨찾기 추가 실패", Toast.LENGTH_SHORT).show();
+//                    }
+//                } else {
+//                    boolean result = dbManager.removeBookmark(detail.getSeq());
+//                    if (result) {
+//                        Toast.makeText(this, "즐겨찾기 해제 성공", Toast.LENGTH_SHORT).show();
+//                        btn_bookmark.setText("즐겨찾기");
+//                    } else {
+//                        Toast.makeText(this, "즐겨찾기 해제 실패", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
 
             case R.id.btn_reservation:
-                Intent intent2 = new Intent(this,  ReservationActivity.class);
+                Intent intent2 = new Intent(this, Date_reservation.class);
                 intent2.putExtra("title", detail.getTitle(false));
                 intent2.putExtra("price", detail.getPrice());
                 intent2.putExtra("PlaceUrl", detail.getPlaceUrl( ));

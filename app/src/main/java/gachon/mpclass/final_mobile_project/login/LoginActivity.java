@@ -93,17 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         loaderLayout.setVisibility(View.GONE);
 
-//                                         UserData userData = new UserData();
-//                                        userData.userEmailID = email.substring(0, email.indexOf('@'));
-//                                        pushToken();
-//                                        userData.fcmToken =tokenValue;
-//                                        mFirebaseDatabase = FirebaseDatabase.getInstance();
-//
-//                                        mFirebaseDatabase.getReference("users").child(userData.userEmailID).setValue(userData);
 
-
-//
-//                                        mFirebaseDatabase.getReference("users").child(userData.userEmailID).setValue(userData);
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         startActivity(intent);
                                     } else {

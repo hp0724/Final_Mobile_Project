@@ -70,7 +70,7 @@ public class ShowAdapter extends BaseAdapter {
             viewHolder.tvPlace = view.findViewById(R.id.tv_place);
             viewHolder.tvRealmName = view.findViewById(R.id.tv_realmName);
             viewHolder.ivImage = view.findViewById(R.id.imageView);
-            viewHolder.btnBookMark = view.findViewById(R.id.btn_bookmark);
+//            viewHolder.btnBookMark = view.findViewById(R.id.btn_bookmark);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -83,37 +83,37 @@ public class ShowAdapter extends BaseAdapter {
         viewHolder.tvPlace.setText(dto.getPlace());
         viewHolder.tvRealmName.setText(dto.getRealmName());
 
-        viewHolder.btnBookMark.setFocusable(false);
-        if (dbManager.existingBookmark(dto.getSeq())) {
-            viewHolder.btnBookMark.setText("즐겨찾기 해제");
-
-            viewHolder.btnBookMark.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    boolean result = dbManager.removeBookmark(dto.getSeq());
-                    if (result) {
-                        Toast.makeText(context, "즐겨찾기 해제 성공", Toast.LENGTH_SHORT).show();
-                        notifyDataSetChanged();
-                    } else {
-                        Toast.makeText(context, "즐겨찾기 해제 실패", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        } else {
-            viewHolder.btnBookMark.setText("즐겨찾기");
-            viewHolder.btnBookMark.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    boolean result = dbManager.addBookmark(dto);
-                    if (result) {
-                        Toast.makeText(context, "즐겨찾기 추가 성공", Toast.LENGTH_SHORT).show();
-                        notifyDataSetChanged();
-                    } else {
-                        Toast.makeText(context, "즐겨찾기 추가 실패", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
+//        viewHolder.btnBookMark.setFocusable(false);
+//        if (dbManager.existingBookmark(dto.getSeq())) {
+//            viewHolder.btnBookMark.setText("즐겨찾기 해제");
+//
+//            viewHolder.btnBookMark.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    boolean result = dbManager.removeBookmark(dto.getSeq());
+//                    if (result) {
+//                        Toast.makeText(context, "즐겨찾기 해제 성공", Toast.LENGTH_SHORT).show();
+//                        notifyDataSetChanged();
+//                    } else {
+//                        Toast.makeText(context, "즐겨찾기 해제 실패", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
+//        } else {
+//            viewHolder.btnBookMark.setText("즐겨찾기");
+//            viewHolder.btnBookMark.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    boolean result = dbManager.addBookmark(dto);
+//                    if (result) {
+//                        Toast.makeText(context, "즐겨찾기 추가 성공", Toast.LENGTH_SHORT).show();
+//                        notifyDataSetChanged();
+//                    } else {
+//                        Toast.makeText(context, "즐겨찾기 추가 실패", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
+//        }
 
         if (dto.getImageLink() == null) {
             viewHolder.ivImage.setImageResource(R.mipmap.ic_launcher);

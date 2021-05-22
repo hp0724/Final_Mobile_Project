@@ -51,6 +51,8 @@
         <activity android:name=".Show.DetailShowActivity" />
         <activity android:name=".Main.MainActivity"/>
         <activity android:name=".reservation.ReservationActivity"/>
+        <activity android:name=".reservation.Date_reservation"/>
+
 
 
 

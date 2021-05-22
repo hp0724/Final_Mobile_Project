@@ -18,7 +18,7 @@ import gachon.mpclass.final_mobile_project.useperformancedata.ProcessOpenData;
 
 public class FragmentMypage extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_mypage, container, false);
+        View view = inflater.inflate(R.layout.activity_bookmark, container, false);
 
         return view;
     }

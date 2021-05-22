@@ -49,20 +49,20 @@
         app:layout_constraintStart_toEndOf="@+id/tv_place"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
-    <Button
-        android:id="@+id/btn_bookmark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:onClick="onClick"
-        android:text="즐겨찾기"
-        android:background="@drawable/custom_button"
-        android:backgroundTint="@color/blue"
-        android:fontFamily="@font/cafe24oneprettynight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_place" />
+<!--    <Button-->
+<!--        android:id="@+id/btn_bookmark"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginRight="16dp"-->
+<!--        android:onClick="onClick"-->
+<!--        android:text="즐겨찾기"-->
+<!--        android:background="@drawable/custom_button"-->
+<!--        android:backgroundTint="@color/blue"-->
+<!--        android:fontFamily="@font/cafe24oneprettynight"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_place" />-->
 
     <TextView
         android:id="@+id/tv_place"

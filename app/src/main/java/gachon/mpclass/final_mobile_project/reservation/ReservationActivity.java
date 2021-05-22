@@ -20,9 +20,9 @@ import gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
 import gachon.mpclass.final_mobile_project.Review.ReviewDto;
 
 public class ReservationActivity extends AppCompatActivity {
-    TextView etTitle;
-    TextView etTitle2;
-    TextView etTitle3;
+    TextView Title;
+    TextView price;
+    TextView place;
     TextView etTitle4;
     TextView etContent;
 
@@ -33,9 +33,9 @@ public class ReservationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
 
-        etTitle = findViewById(R.id.reservation_detailTitle);
-        etTitle2 = findViewById(R.id.reservation_detailPrice);
-        etTitle3 = findViewById(R.id.reservation_detailAddr);
+        Title = findViewById(R.id.reservation_detailTitle);
+        price = findViewById(R.id.reservation_detailPrice);
+        place = findViewById(R.id.reservation_detailAddr);
         etTitle4 = findViewById(R.id.reservation_detailURL);
         etContent = findViewById(R.id.et_write_review);
 
@@ -44,15 +44,15 @@ public class ReservationActivity extends AppCompatActivity {
         //인텐트에서 꺼낸 값이 널이 아닐 경우에만 공연 제목 자동으로 넣어주고 아니면 직접 입력하게 하기
         String str = getIntent().getStringExtra("title");
         if (str != null) {
-            etTitle.setText(str);
+            Title.setText(str);
         }
         String str2 = getIntent().getStringExtra("price");
         if (str != null) {
-            etTitle2.setText(str2);
+            price.setText(str2);
         }
         String str3 = getIntent().getStringExtra("PlaceUrl");
         if (str != null) {
-            etTitle3.setText(str3);
+            place.setText(str3);
         }
         String str4 = getIntent().getStringExtra("TicketLink");
         if (str != null) {
@@ -65,7 +65,7 @@ public class ReservationActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_write_review:
-                String title = etTitle.getText().toString();
+                String title = Title.getText().toString();
                 String content = etContent.getText().toString();
 
                 if (!title.isEmpty() && !content.isEmpty()) {

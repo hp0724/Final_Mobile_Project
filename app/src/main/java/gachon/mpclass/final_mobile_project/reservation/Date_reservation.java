@@ -16,7 +16,7 @@ import gachon.mpclass.final_mobile_project.R;
 
 public class Date_reservation extends AppCompatActivity {
 
-    TextView theater, performance, date;
+    TextView theater, performance, date,price,place;
     Button time1, calendar;
 
     private int Year, Month, Day;
@@ -26,11 +26,29 @@ public class Date_reservation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_reservation);
 
-        theater = findViewById(R.id.date_theater);
+        theater=findViewById(R.id.date_performName);
+        price=findViewById(R.id.price_theater);
+        place=findViewById(R.id.theart_addr);
         performance = findViewById(R.id.date_performName);
         date = findViewById(R.id.date);
         calendar = findViewById(R.id.calender);
-        time1 = findViewById(R.id.time1);
+        time1=findViewById(R.id.time_selector);
+
+
+        String getThaeter = getIntent().getStringExtra("title");
+        if (getThaeter != null) {
+            theater.setText(getThaeter);
+        }
+
+        String getprice = getIntent().getStringExtra("price");
+        if (getprice != null) {
+            theater.setText(getprice);
+        }
+        String getUrl = getIntent().getStringExtra("PlaceUrl");
+        if (getUrl != null) {
+            theater.setText(getUrl);
+        }
+
 
         //api로 받아서 극 이름,극장정보,시간 넣기
        /* performance.setText();
@@ -43,6 +61,14 @@ public class Date_reservation extends AppCompatActivity {
             public void onClick(View v) {
 
                 showDate();
+            }
+        });
+        //시간선택
+        time1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                today();
             }
         });
 
