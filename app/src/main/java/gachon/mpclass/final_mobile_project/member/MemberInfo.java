@@ -23,8 +23,6 @@ public class MemberInfo {
      {
          this.name=name;
          this.phoneNumber=phoneNumber;
-
-
      }
 
 

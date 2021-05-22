@@ -84,39 +84,4 @@ public class DetailReviewActivity extends AppCompatActivity {
                 break;
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.delete_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.item_delete:
-                AlertDialog.Builder builder = new AlertDialog.Builder(DetailReviewActivity.this);
-                builder.setTitle("리뷰 삭제")
-                        .setMessage("리뷰를 삭제하시겠습니까?")
-                        .setPositiveButton("삭제", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (manager.removeReview(dto.get_id())) {
-                                    setResult(RESULT_OK);
-                                    finish();
-                                    //startActivity(new Intent(DetailReviewActivity.this, ListReviewActivity.class));
-                                } else {
-                                    Toast.makeText(DetailReviewActivity.this, "삭제 실패", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        })
-                        .setNegativeButton("취소", null)
-                        .setCancelable(false)
-                        .show();
-
-                break;
-        }
-
-        return true;
-    }
 }

@@ -287,31 +287,6 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
                 }
             }
         });
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        Intent intent = null;
-
-        switch (item.getItemId()) {
-            case R.id.item_bookmark:
-                intent = new Intent(this, BookmarkActivity.class);
-                break;
-            case R.id.item_review:
-                intent = new Intent(this, ListReviewActivity.class);
-                break;
-        }
-        if (intent != null) startActivity(intent);
-
-        return true;
     }
 
     private boolean checkPermission() {

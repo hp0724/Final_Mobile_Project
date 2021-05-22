@@ -105,32 +105,4 @@ public class ListReviewActivity extends AppCompatActivity {
         cursor = manager.getAllReview();
         adapter.changeCursor(cursor);
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        if (cursor != null) cursor.close();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.bookmark_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        Intent intent = null;
-
-        switch (item.getItemId()) {
-            case R.id.bookmark_alone:
-                intent = new Intent(this, BookmarkActivity.class);
-                break;
-        }
-        if (intent != null) startActivity(intent);
-
-        return true;
-    }
 }

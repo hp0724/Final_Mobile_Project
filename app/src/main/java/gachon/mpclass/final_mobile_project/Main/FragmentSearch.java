@@ -1,38 +1,39 @@
-package gachon.mpclass.final_mobile_project.Show;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package gachon.mpclass.final_mobile_project.Main;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import gachon.mpclass.final_mobile_project.Bookmark.BookmarkActivity;
 import gachon.mpclass.final_mobile_project.Manager.ImageFileManager;
 import gachon.mpclass.final_mobile_project.Manager.NetworkManager;
 import gachon.mpclass.final_mobile_project.R;
-import gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
+import gachon.mpclass.final_mobile_project.Show.DetailShowActivity;
+import gachon.mpclass.final_mobile_project.Show.ShowDto;
 
-public class SearchShowActivity extends AppCompatActivity {
+public class FragmentSearch extends Fragment {
 
     public static final String TAG = "SearchShowActivity";
 
     EditText etPlace;
     ListView lvList;
+    Button btn_search;
     String apiAddress;
 
     String query;
@@ -43,68 +44,56 @@ public class SearchShowActivity extends AppCompatActivity {
     NetworkManager networkManager;
     ImageFileManager imgFileManager;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_show);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
 
-        etPlace = findViewById(R.id.et_place);
-        lvList = findViewById(R.id.lvList);
-
+        etPlace = view.findViewById(R.id.et_place);
+        lvList = view.findViewById(R.id.lvList);
+        btn_search = view.findViewById(R.id.btn_search);
         resultList = new ArrayList();
-        adapter = new gachon.mpclass.final_mobile_project.Show.ShowAdapter(this, R.layout.listview_show, resultList);
+        adapter = new gachon.mpclass.final_mobile_project.Show.ShowAdapter(getContext(), R.layout.listview_show, resultList);
         lvList.setAdapter(adapter);
 
         apiAddress = getResources().getString(R.string.api_url);
         parser = new gachon.mpclass.final_mobile_project.Show.ShowXmlParser();
-        networkManager = new NetworkManager(this);
-        imgFileManager = new ImageFileManager(this);
+        networkManager = new NetworkManager(getActivity());
+        imgFileManager = new ImageFileManager(getActivity());
 
         lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SearchShowActivity.this, DetailShowActivity.class);
+                Intent intent = new Intent(getContext(), DetailShowActivity.class);
                 gachon.mpclass.final_mobile_project.Show.ShowDto dto = resultList.get(position);
                 intent.putExtra("detailDto", dto);
                 startActivity(intent);
             }
         });
+        btn_search.setOnClickListener((View.OnClickListener) this);
 
+
+        return view;
     }
-
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_search:
-                query = etPlace.getText().toString();
-
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_search :
                 try {
                     new NetworkAsyncTask().execute(apiAddress + URLEncoder.encode(query, "UTF-8"));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-
-                break;
-            case R.id.btn_search_place:
-                //검색된 공연들의 공연장 위치를 알려주는 액티비티로 넘어감
-                if (resultList != null) {
-                    Intent intent = new Intent(this, gachon.mpclass.final_mobile_project.Show.ShowMapActivity.class);
-                    intent.putExtra("showList", resultList);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(this, "공연을 먼저 검색하세요.", Toast.LENGTH_SHORT).show();
-                }
-
                 break;
         }
     }
 
-    class NetworkAsyncTask extends AsyncTask<String, Integer, ArrayList<gachon.mpclass.final_mobile_project.Show.ShowDto>> {
+
+
+class NetworkAsyncTask extends AsyncTask<String, Integer, ArrayList<ShowDto>> {
         ProgressDialog progressDialog;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = ProgressDialog.show(SearchShowActivity.this, "Wait", "Searching...");
+            progressDialog = ProgressDialog.show(getContext(), "Wait", "Searching...");
         }
 
         @Override
@@ -147,33 +136,9 @@ public class SearchShowActivity extends AppCompatActivity {
             if (!resultList.isEmpty()) {
                 adapter.setList(resultList);
             } else {
-                Toast.makeText(SearchShowActivity.this, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show();
             }
             progressDialog.dismiss();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        Intent intent = null;
-
-        switch (item.getItemId()) {
-            case R.id.item_bookmark:
-                intent = new Intent(this, BookmarkActivity.class);
-                break;
-            case R.id.item_review:
-                intent = new Intent(this, ListReviewActivity.class);
-                break;
-        }
-        if (intent != null) startActivity(intent);
-
-        return true;
     }
 }

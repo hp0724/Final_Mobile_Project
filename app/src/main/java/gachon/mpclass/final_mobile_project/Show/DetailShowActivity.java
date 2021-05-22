@@ -223,52 +223,6 @@ public class DetailShowActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.alarm_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        Intent intent = null;
-
-        switch (item.getItemId()) {
-            case R.id.item_alarm:
-                intent = new Intent(this, gachon.mpclass.final_mobile_project.Show.MyBroadcastReceiver.class);
-                intent.putExtra("title", detail.getTitle(false));
-
-                //공연 종료일 알람
-                pendingIntent = PendingIntent.getBroadcast(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                Calendar end = Calendar.getInstance();
-                end.setTimeInMillis(System.currentTimeMillis());
-
-                String e = detail.getEndDate();
-                int endYear = Integer.parseInt(e.substring(0, 4));
-                int endMonth = Integer.parseInt(e.substring(4, 6));
-                int endDay = Integer.parseInt(e.substring(6, 8));
-                end.set(endYear, endMonth-1, endDay, 0, 0, 0);
-//                end.set(endYear, endMonth-1, 23, 0, 49, 0);
-
-                alarmManager.set(AlarmManager.RTC, end.getTimeInMillis(), pendingIntent);
-
-                Toast.makeText(this, "공연 종료일 알림 설정", Toast.LENGTH_SHORT).show();
-
-                break;
-            case R.id.alarm_bookmark:
-                intent = new Intent(this, BookmarkActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.alarm_review:
-                intent = new Intent(this, ListReviewActivity.class);
-                startActivity(intent);
-                break;
-        }
-
-        return true;
-    }
-
     // notification 채널 만드는 코드
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

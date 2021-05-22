@@ -70,28 +70,4 @@ public class AddReviewActivity extends AppCompatActivity {
                 break;
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        Intent intent = null;
-
-        switch (item.getItemId()) {
-            case R.id.item_bookmark:
-                intent = new Intent(this, BookmarkActivity.class);
-                break;
-            case R.id.item_review:
-                intent = new Intent(this, gachon.mpclass.final_mobile_project.Review.ListReviewActivity.class);
-                break;
-        }
-        if (intent != null) startActivity(intent);
-
-        return true;
-    }
 }

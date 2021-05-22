@@ -87,24 +87,4 @@ public class BookmarkMapActivity extends AppCompatActivity {
 
         }
     };
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.review_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent = null;
-
-        switch (item.getItemId()) {
-            case R.id.review_alone:
-                intent = new Intent(this, ListReviewActivity.class);
-                break;
-        }
-        if (intent != null) startActivity(intent);
-
-        return true;
-    }
 }
