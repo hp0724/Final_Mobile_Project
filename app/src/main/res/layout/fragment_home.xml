@@ -22,7 +22,7 @@
             android:gravity="center_horizontal"
             android:padding="15dp"
             android:text="예매 상황판"
-            android:textColor="#2B2B2B"
+            android:textColor="#D6A760"
             android:textSize="40sp"
             />
 

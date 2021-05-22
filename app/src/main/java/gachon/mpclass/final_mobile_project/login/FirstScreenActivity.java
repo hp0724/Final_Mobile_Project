@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import gachon.mpclass.final_mobile_project.R;
 
-public class FirstScreenActivity extends AppCompatActivity {
+public class  FirstScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,16 +1,147 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="UTF-8"?>
 
-    android:layout_width="match_parent"
+    <LinearLayout
+    android:background="@color/blue2"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".Main.FragmentMypage">
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:textStyle="bold"
+        android:id="@+id/myPage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/blue"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/cafe24oneprettynight"
+        android:text="마이 페이지"
+        android:textAlignment="center"
+        android:textSize="20pt" />
 
-</FrameLayout>
+
+    <LinearLayout
+        android:background="@color/blue"
+        android:orientation="vertical"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/myName"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/cafe24oneprettynight"
+                android:text="이름"
+
+                android:textAlignment="center"
+                android:textSize="10pt" />
+            <TextView
+                android:id="@+id/myName2"
+                android:layout_marginLeft="15dp"
+                android:layout_width="match_parent"
+                android:textSize="10pt"
+                android:layout_height="match_parent"
+                android:text="이름 표시"/>
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/myNumber"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/cafe24oneprettynight"
+                android:text="전화 번호"
+
+                android:textAlignment="center"
+                android:textSize="10pt" />
+            <TextView
+                android:id="@+id/myNumber2"
+                android:layout_marginLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="10pt"
+                 android:text="전화번호 표시"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/myBirth2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/cafe24oneprettynight"
+                android:text="생년월일"
+
+                android:textAlignment="center"
+                android:textSize="10pt" />
+            <TextView
+                android:id="@+id/myBirth"
+                android:layout_marginLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="10pt"
+                 android:text="생년월일 표시"/>
+
+
+        </LinearLayout>
+
+</LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+
+
+        <Button android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:id="@+id/bookBtn"
+            android:fontFamily="@font/cafe24oneprettynight"
+            android:text="나의 예약"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/blue"/>
+
+    <Button android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:id="@+id/logoutBtn"
+        android:fontFamily="@font/cafe24oneprettynight"
+        android:text="로그아웃"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/blue"/>
+
+
+
+</LinearLayout>
+
+</LinearLayout>

@@ -1,243 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Show.DetailShowActivity">
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:gravity ="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+    <androidx.constraintlayout.widget.ConstraintLayout tools:context=".Show.DetailShowActivity" android:layout_height="match_parent" android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:map="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
 
-            <fragment
-                android:id="@+id/reservation_detail_map"
-                android:name="com.google.android.gms.maps.MapFragment"
-                android:layout_width="0dp"
-                android:layout_height="300dp"
-                android:layout_marginStart="16dp"
+    <ScrollView android:layout_height="match_parent" android:layout_width="match_parent" app:layout_constraintVertical_bias="1.0" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:gravity="center" android:fillViewport="true">
 
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                map:layout_constraintEnd_toEndOf="parent"
-                map:layout_constraintStart_toStartOf="parent"
-                map:layout_constraintTop_toBottomOf="@+id/reservation_detailAddr"
-                map:uiZoomControls="true" />
 
-            <TextView
-                android:id="@+id/reservation_detailTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/line_textview"
-                android:gravity="center_horizontal"
-                android:text="공연제목"
-                android:textColor="#0C0606"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/scroll_con4">
 
-            <ImageView
-                android:id="@+id/reservation_imageView"
-                android:layout_width="160dp"
-                android:layout_height="190dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reservation_detailTitle"
-                app:srcCompat="@mipmap/ic_launcher" />
+    <fragment android:layout_height="300dp" android:layout_width="0dp" map:layout_constraintStart_toStartOf="parent" map:layout_constraintEnd_toEndOf="parent" android:id="@+id/reservation_detail_map" map:uiZoomControls="true" map:layout_constraintTop_toBottomOf="@+id/reservation_detailAddr" android:layout_marginRight="16dp" android:layout_marginEnd="16dp" android:layout_marginTop="16dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:name="com.google.android.gms.maps.MapFragment"/>
 
-            <Button
-                android:id="@+id/reservation_btn_add_review"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="16dp"
-                android:onClick="onClick"
-                android:text="리뷰 작성"
-                app:layout_constraintStart_toStartOf="parent"
-                map:layout_constraintTop_toBottomOf="@+id/reservation_detail_map" />
+    <TextView android:layout_height="wrap_content" android:layout_width="0dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:gravity="center_horizontal" android:id="@+id/reservation_detailTitle" android:layout_marginRight="16dp" android:layout_marginEnd="16dp" android:layout_marginTop="16dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textStyle="bold" android:textSize="25sp" android:textColor="#0C0606" android:fontFamily="@font/cafe24oneprettynight" android:backgroundTint="@color/blue" android:text="공연제목" android:background="@drawable/line_textview"/>
 
-            <Button
-                android:id="@+id/reservation_btn_add_bookmark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="36dp"
-                android:onClick="onClick"
-                android:text="즐겨찾기"
-                app:layout_constraintEnd_toEndOf="parent"
-                map:layout_constraintTop_toBottomOf="@+id/reservation_detail_map" />
+    <ImageView android:layout_height="190dp" android:layout_width="160dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/reservation_imageView2" app:layout_constraintTop_toBottomOf="@+id/reservation_detailTitle" android:layout_marginTop="16dp" app:srcCompat="@mipmap/ic_launcher"/>
 
-            <Button
-                android:id="@+id/reservation_btn_add_reservation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:onClick="onClick"
-                android:text="예약하기"
-                map:layout_constraintEnd_toStartOf="@+id/reservation_btn_add_bookmark"
-                map:layout_constraintStart_toEndOf="@+id/reservation_btn_add_review"
-                map:layout_constraintTop_toBottomOf="@+id/reservation_detail_map" />
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/reservation_btn_add_bookmark" map:layout_constraintTop_toBottomOf="@+id/reservation_detail_map" android:layout_marginEnd="44dp" android:layout_marginTop="16dp" android:text="즐겨찾기" android:onClick="onClick"/>
 
-            <TextView
-                android:id="@+id/reservation_detailPlace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="32dp"
-                android:text="공연 장소"
-                android:textColor="#050202"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reservation_imageView" />
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/btn_reservation" map:layout_constraintTop_toBottomOf="@+id/reservation_detail_map" android:layout_marginEnd="60dp" android:layout_marginTop="16dp" android:layout_marginStart="60dp" android:text="예약하기" android:onClick="onClick" map:layout_constraintStart_toEndOf="@+id/reservation_btn_add_review" map:layout_constraintEnd_toStartOf="@+id/reservation_btn_add_bookmark"/>
 
-            <TextView
-                android:id="@+id/reservation_detailStart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:text="시작일"
-                android:textColor="#050101"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reservation_detailPlace" />
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintStart_toStartOf="parent" android:id="@+id/reservation_detailPlace" app:layout_constraintTop_toBottomOf="@+id/reservation_imageView2" android:layout_marginTop="32dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textStyle="bold" android:textSize="20sp" android:textColor="#050202" android:fontFamily="@font/cafe24oneprettynight" android:text="공연 장소"/>
 
-            <TextView
-                android:id="@+id/reservation_detailEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:text="종료일"
-                android:textColor="#0B0707"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reservation_detailStart" />
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintStart_toStartOf="parent" android:id="@+id/reservation_detailStart" app:layout_constraintTop_toBottomOf="@+id/reservation_detailPlace" android:layout_marginTop="24dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textStyle="bold" android:textSize="20sp" android:textColor="#050101" android:fontFamily="@font/cafe24oneprettynight" android:text="시작일"/>
 
-            <TextView
-                android:id="@+id/reservation_detailPrice"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="티켓 가격"
-                android:textColor="#090202"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reservation_detailEnd" />
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintStart_toStartOf="parent" android:id="@+id/reservation_detailEnd" app:layout_constraintTop_toBottomOf="@+id/reservation_detailStart" android:layout_marginTop="24dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textStyle="bold" android:textSize="20sp" android:textColor="#0B0707" android:fontFamily="@font/cafe24oneprettynight" android:text="종료일"/>
 
-            <TextView
-                android:id="@+id/reservation_detailAddr"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="공연장 주소"
-                android:textColor="#070303"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reservation_detailURL" />
+    <TextView android:layout_height="wrap_content" android:layout_width="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="1.0" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/reservation_detailPrice" app:layout_constraintTop_toBottomOf="@+id/reservation_detailEnd" android:layout_marginRight="16dp" android:layout_marginEnd="16dp" android:layout_marginTop="24dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textStyle="bold" android:textSize="20sp" android:textColor="#090202" android:fontFamily="@font/cafe24oneprettynight" android:text="티켓 가격"/>
 
-            <TextView
-                android:id="@+id/reservation_detailURL"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="공연장 URL"
-                android:textColor="#0C0404"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reservation_detailPhone" />
+    <TextView android:layout_height="wrap_content" android:layout_width="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/reservation_detailAddr" app:layout_constraintTop_toBottomOf="@+id/reservation_detailURL" android:layout_marginRight="16dp" android:layout_marginEnd="16dp" android:layout_marginTop="24dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textStyle="bold" android:textSize="20sp" android:textColor="#070303" android:fontFamily="@font/cafe24oneprettynight" android:text="공연장 주소"/>
 
-            <TextView
-                android:id="@+id/reservation_detailArea"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="35dp"
-                android:text="지역"
-                android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/reservation_detailPlace"
-                app:layout_constraintTop_toBottomOf="@+id/reservation_imageView" />
+    <TextView android:layout_height="wrap_content" android:layout_width="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/reservation_detailURL" app:layout_constraintTop_toBottomOf="@+id/reservation_detailPhone" android:layout_marginRight="16dp" android:layout_marginEnd="16dp" android:layout_marginTop="24dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textStyle="bold" android:textSize="20sp" android:textColor="#0C0404" android:fontFamily="@font/cafe24oneprettynight" android:text="공연장 URL"/>
 
-            <TextView
-                android:id="@+id/reservation_detailLink"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:text="예매처"
-                android:textColor="#040202"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reservation_detailPrice"
-                map:layout_constraintHorizontal_bias="0.0" />
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/reservation_detailArea" app:layout_constraintTop_toBottomOf="@+id/reservation_imageView2" android:layout_marginTop="35dp" android:layout_marginLeft="4dp" android:layout_marginStart="4dp" android:textSize="16sp" android:fontFamily="@font/cafe24oneprettynight" android:text="지역" app:layout_constraintStart_toEndOf="@+id/reservation_detailPlace"/>
 
-            <TextView
-                android:id="@+id/reservation_detailPhone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="문의 번호"
-                android:textColor="#050303"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reservation_detailLink"
-                map:layout_constraintEnd_toEndOf="parent" />
+    <TextView android:layout_height="wrap_content" android:layout_width="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/reservation_detailLink" app:layout_constraintTop_toBottomOf="@+id/reservation_detailPrice" android:layout_marginRight="16dp" android:layout_marginEnd="16dp" android:layout_marginTop="24dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textStyle="bold" android:textSize="20sp" android:textColor="#040202" android:fontFamily="@font/cafe24oneprettynight" android:text="예매처"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    <TextView android:layout_height="wrap_content" android:layout_width="0dp" app:layout_constraintStart_toStartOf="parent" map:layout_constraintEnd_toEndOf="parent" android:id="@+id/reservation_detailPhone" app:layout_constraintTop_toBottomOf="@+id/reservation_detailLink" android:layout_marginRight="16dp" android:layout_marginEnd="16dp" android:layout_marginTop="24dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textStyle="bold" android:textSize="20sp" android:textColor="#050303" android:fontFamily="@font/cafe24oneprettynight" android:text="문의 번호"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,6 +52,7 @@
         <activity android:name=".Main.MainActivity"/>
         <activity android:name=".reservation.ReservationActivity"/>
         <activity android:name=".reservation.Date_reservation"/>
+        <activity android:name=".Main.MybookActivity"/>
 
 
 

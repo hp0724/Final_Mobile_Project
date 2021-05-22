@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         menu1Fragment = new FragmentMypage();
         menu2Fragment = new FragmentHome();
         menu3Fragment = new FragmentSearch();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,menu1Fragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,menu2Fragment).commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {

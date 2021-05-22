@@ -215,8 +215,8 @@ public class DetailShowActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, Date_reservation.class);
                 intent2.putExtra("title", detail.getTitle(false));
                 intent2.putExtra("price", detail.getPrice());
-                intent2.putExtra("PlaceUrl", detail.getPlaceUrl( ));
-                intent2.putExtra("TicketLink", detail.getTicketLink());
+                intent2.putExtra("Place", detail.getPlace());
+
 
                 startActivity(intent2);
                 break;

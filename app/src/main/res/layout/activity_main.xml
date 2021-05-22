@@ -15,8 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:menu="@menu/menu"
-        app:itemTextColor="@color/menu_colors"
-        app:itemIconTint="@color/menu_colors"/>
+        app:itemTextColor="@color/white"
+        app:itemBackground="@color/blue"
+        app:itemIconTint="@color/white"/>
 
 
 

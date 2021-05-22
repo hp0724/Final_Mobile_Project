@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -36,17 +37,20 @@ public class Date_reservation extends AppCompatActivity {
 
 
         String getThaeter = getIntent().getStringExtra("title");
+        Log.d("Tag",getThaeter);
         if (getThaeter != null) {
             theater.setText(getThaeter);
         }
 
         String getprice = getIntent().getStringExtra("price");
+        Log.d("Tag",getprice);
         if (getprice != null) {
-            theater.setText(getprice);
+            price.setText(getprice);
         }
-        String getUrl = getIntent().getStringExtra("PlaceUrl");
-        if (getUrl != null) {
-            theater.setText(getUrl);
+        String getPlace = getIntent().getStringExtra("Place");
+        Log.d("Tag",getPlace);
+        if (getPlace != null) {
+            place.setText(getPlace);
         }
 
 
