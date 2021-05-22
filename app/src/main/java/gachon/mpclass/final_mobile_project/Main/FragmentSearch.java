@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ import gachon.mpclass.final_mobile_project.Show.ShowDto;
 
 public class FragmentSearch extends Fragment {
 
-    public static final String TAG = "SearchShowActivity";
+    public static final String TAG = "FragmentSearch";
 
     EditText etPlace;
     ListView lvList;
@@ -43,13 +44,15 @@ public class FragmentSearch extends Fragment {
     gachon.mpclass.final_mobile_project.Show.ShowXmlParser parser;
     NetworkManager networkManager;
     ImageFileManager imgFileManager;
-
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
         etPlace = view.findViewById(R.id.et_place);
         lvList = view.findViewById(R.id.lvList);
+
         btn_search = view.findViewById(R.id.btn_search);
+
         resultList = new ArrayList();
         adapter = new gachon.mpclass.final_mobile_project.Show.ShowAdapter(getContext(), R.layout.listview_show, resultList);
         lvList.setAdapter(adapter);
@@ -58,7 +61,7 @@ public class FragmentSearch extends Fragment {
         parser = new gachon.mpclass.final_mobile_project.Show.ShowXmlParser();
         networkManager = new NetworkManager(getActivity());
         imgFileManager = new ImageFileManager(getActivity());
-
+//       리스트 눌르면 전환
         lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -68,26 +71,27 @@ public class FragmentSearch extends Fragment {
                 startActivity(intent);
             }
         });
-        btn_search.setOnClickListener((View.OnClickListener) this);
+       btn_search.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               query = etPlace.getText().toString();
+               try {
+                   new NetworkAsyncTask().execute(apiAddress + URLEncoder.encode(query, "UTF-8"));
+               } catch (UnsupportedEncodingException e) {
+                   e.printStackTrace();
+               }
 
+
+           }
+       } );
 
         return view;
     }
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_search :
-                try {
-                    new NetworkAsyncTask().execute(apiAddress + URLEncoder.encode(query, "UTF-8"));
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-                break;
-        }
-    }
 
 
 
-class NetworkAsyncTask extends AsyncTask<String, Integer, ArrayList<ShowDto>> {
+
+    class NetworkAsyncTask extends AsyncTask<String, Integer, ArrayList<ShowDto>> {
         ProgressDialog progressDialog;
 
         @Override
