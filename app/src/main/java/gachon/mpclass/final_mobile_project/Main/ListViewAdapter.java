@@ -29,15 +29,14 @@ import gachon.mpclass.final_mobile_project.Manager.ImageFileManager;
 import gachon.mpclass.final_mobile_project.R;
 import gachon.mpclass.final_mobile_project.Show.DetailShowActivity;
 
-public class simpleImageAdapter extends RecyclerView.Adapter<simpleImageAdapter.ViewHolder> {
+public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> {
 
-    public ArrayList<Boxoffice> mData = null ;
+    public ArrayList<Performance> mData = null ;
     private OnItemClickListener mListener = null ;
 
     public interface OnItemClickListener {
         void onItemClick(View v, int position) ;
     }
-
     // OnItemClickListener 리스너 객체 참조를 어댑터에 전달하는 메서드
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.mListener = listener ;
@@ -46,11 +45,15 @@ public class simpleImageAdapter extends RecyclerView.Adapter<simpleImageAdapter.
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView1 ;
-        TextView textView;
+        TextView textView1;
+        TextView textView2;
+        TextView textView4;
         ViewHolder(View itemView) {
             super(itemView) ;
             imageView1 = itemView.findViewById(R.id.imageView) ;
-            textView = itemView.findViewById(R.id.textView);
+            textView1 = itemView.findViewById(R.id.tv_title);
+            textView2 = itemView.findViewById(R.id.tv_place);
+            textView4 = itemView.findViewById(R.id.tv_realmName);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -67,27 +70,27 @@ public class simpleImageAdapter extends RecyclerView.Adapter<simpleImageAdapter.
     }
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
-    simpleImageAdapter(ArrayList<Boxoffice> list) {
+    ListViewAdapter(ArrayList<Performance> list) {
         mData = list ;
     }
 
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
     @Override
-    public simpleImageAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ListViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext() ;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
-
-        View view = inflater.inflate(R.layout.main_listview_show, parent, false) ;
-        simpleImageAdapter.ViewHolder vh = new simpleImageAdapter.ViewHolder(view) ;
-
-        return vh ;
+        View view = inflater.inflate(R.layout.listview_show, parent, false) ;
+        ListViewAdapter.ViewHolder vh = new ListViewAdapter.ViewHolder(view);
+        return vh;
     }
 
     // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
     @Override
-    public void onBindViewHolder(simpleImageAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ListViewAdapter.ViewHolder holder, int position) {
         Glide.with(holder.imageView1.getContext()).load(mData.get(position).image).into(holder.imageView1);
-        holder.textView.setText(mData.get(position).title);
+        holder.textView1.setText(mData.get(position).title);
+        holder.textView2.setText(mData.get(position).facility);
+        holder.textView4.setText(mData.get(position).category);
     }
 
     // getItemCount() - 전체 데이터 갯수 리턴.

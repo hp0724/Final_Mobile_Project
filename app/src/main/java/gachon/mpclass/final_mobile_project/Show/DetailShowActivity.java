@@ -1,7 +1,10 @@
 package gachon.mpclass.final_mobile_project.Show;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
@@ -14,6 +17,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -21,11 +25,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -34,10 +43,14 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import gachon.mpclass.final_mobile_project.Bookmark.BookmarkActivity;
+import gachon.mpclass.final_mobile_project.Main.MainActivity;
+import gachon.mpclass.final_mobile_project.Main.simpleImageAdapter;
 import gachon.mpclass.final_mobile_project.Manager.DBManager;
 import gachon.mpclass.final_mobile_project.Manager.ImageFileManager;
 import gachon.mpclass.final_mobile_project.Manager.NetworkManager;
@@ -46,222 +59,153 @@ import gachon.mpclass.final_mobile_project.Review.AddReviewActivity;
 import gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
 import gachon.mpclass.final_mobile_project.reservation.Date_reservation;
 import gachon.mpclass.final_mobile_project.reservation.ReservationActivity;
+import gachon.mpclass.final_mobile_project.useperformancedata.ProcessOpenData;
 
 public class DetailShowActivity extends AppCompatActivity {
 
-    public static final String TAG = "DetailShowActivity";
+    public void setListViewHeightBasedOnItems(ListView listView) {
 
-    TextView title;
+        // Get list adpter of listview;
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null)  return;
+
+        int numberOfItems = listAdapter.getCount();
+
+        // Get total height of all items.
+        int totalItemsHeight = 0;
+        for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
+            View item = listAdapter.getView(itemPos, null, listView);
+            item.measure(0, 0);
+            totalItemsHeight += item.getMeasuredHeight();
+        }
+
+        // Get total height of all item dividers.
+        int totalDividersHeight = listView.getDividerHeight() *  (numberOfItems - 1);
+
+        // Set list height.
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalItemsHeight + totalDividersHeight;
+        //Log.v("h",Integer.toString(params.height));
+        listView.setLayoutParams(params);
+        listView.requestLayout();
+    }
+    Intent intent1;
+    Intent intent2;
+    ImageView poster;
+    TextView name;
+    TextView genre;
     TextView place;
-    TextView area;
-    TextView startDate;
-    TextView endDate;
-    TextView price;
-    TextView link;
-    TextView phone;
-    TextView placeAddr;
-    TextView placeUrl;
-    ImageView image;
-    Button btn_bookmark;
-
-    DBManager dbManager;
-    NetworkManager networkManager;
-    ImageFileManager imgFileManager;
-    gachon.mpclass.final_mobile_project.Show.ShowXmlParser parser;
-    gachon.mpclass.final_mobile_project.Show.ShowDto detail;
-
-    PendingIntent pendingIntent = null;
-    AlarmManager alarmManager = null;
-
-    private GoogleMap mGoogleMap;
-    private Marker centerMarker;
-
+    TextView time;
+    TextView age;
+    TextView ticketprice;
+    TextView duration;
+    TextView cast;
+    TextView crew;
+    TextView start;
+    TextView end;
+    ListView introduction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_show);
+        poster=findViewById(R.id.imageView2);
+        name=findViewById(R.id.tv_detailTitle);
+        genre=findViewById(R.id.tv_detailGenre);
+        place=findViewById(R.id.tv_detailPlace);
+        time=findViewById(R.id.tv_time);
+        age=findViewById(R.id.tv_age);
+        ticketprice=findViewById(R.id.tv_detailPrice);
+        duration=findViewById(R.id.tv_detailDuration);
+        cast=findViewById(R.id.tv_cast);
+        crew=findViewById(R.id.tv_crew);
+        start=findViewById(R.id.tv_detailStart);
+        end=findViewById(R.id.tv_detailEnd);
+        introduction= findViewById(R.id.recycler3);
+        intent1 = new Intent(getBaseContext(), MainActivity.class);
+        intent2 = new Intent(getBaseContext(), Date_reservation.class);
+        BottomNavigationView navView = findViewById(R.id.bottom_navigation2);
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        parser = new gachon.mpclass.final_mobile_project.Show.ShowXmlParser();
-        networkManager = new NetworkManager(this);
-        imgFileManager = new ImageFileManager(this);
-        dbManager = new DBManager(this);
-
-        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        createNotificationChannel();
-
-//        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.detail_map);
-//        mapFragment.getMapAsync(mapReadyCallBack);
-
-        title = findViewById(R.id.tv_detailTitle);
-        place = findViewById(R.id.tv_detailPlace);
-        area = findViewById(R.id.tv_detailArea);
-        startDate = findViewById(R.id.tv_detailStart);
-        endDate = findViewById(R.id.tv_detailEnd);
-        price = findViewById(R.id.tv_detailPrice);
-        link = findViewById(R.id.tv_detailLink); //예매처
-        phone = findViewById(R.id.tv_detailPhone);
-        placeAddr = findViewById(R.id.tv_detailAddr);
-        placeUrl = findViewById(R.id.tv_detailURL); //공연장소 URL
-        image = findViewById(R.id.imageView2);
-
-        detail = (gachon.mpclass.final_mobile_project.Show.ShowDto) getIntent().getSerializableExtra("detailDto");
-
-//        btn_bookmark = findViewById(R.id.btn_add_bookmark);
-        if (dbManager.existingBookmark(detail.getSeq())) {
-            btn_bookmark.setText("즐겨찾기 해제");
-        }
-
-        tvSetText();
-
-        // 예매처 URL 클릭시 해당 페이지로 이동
-        link.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                String url = link.getText().toString().substring(5);
-                intent.setData(Uri.parse(url));
-                startActivity(intent);
+        Intent getIntent = getIntent();
+        String id = getIntent.getStringExtra("id");
+        Log.v("id",id);
+        ProcessOpenData pd= new ProcessOpenData();
+        String data = pd.viewDataDetail(id);
+        ArrayList<String> imagelist= new ArrayList<>();
+        String[] dataArray = data.split("\n");
+        for (int i = 0; i < dataArray.length; i = i + 1) {
+            if (dataArray[i].contains("포스터이미지경로 :")) {
+                Glide.with(this).load(dataArray[i].replace("포스터이미지경로 :","")).into(poster);
             }
-        });
-
-        // 공연 장소 URL 클릭시 해당 페이지로 이동
-        placeUrl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                String url = placeUrl.getText().toString().substring(9);
-                intent.setData(Uri.parse(url));
-                startActivity(intent);
+            if (dataArray[i].contains("공연명 :"))
+            {
+                intent2.putExtra("title",dataArray[i].replace("공연명 :",""));
+                name.setText(dataArray[i].replace("공연명 :",""));
             }
-        });
+            if (dataArray[i].contains("장르 :"))
+            {
 
-    }
+                genre.setText(dataArray[i]);
+            }
+            if (dataArray[i].contains("장소 :"))
+            {
 
-    public void tvSetText() {
-        title.setText(detail.getTitle(false));
-        place.setText("장소: " + detail.getPlace());
-        area.setText("(" + detail.getArea() + ")");
-
-        String s = detail.getStartDate();
-        String startD = s.substring(0, 4) + "." + s.substring(4, 6) + "." + s.substring(6, 8);
-        startDate.setText("시작일: " + startD);
-
-        String e = detail.getEndDate();
-        String endD = e.substring(0, 4) + "." + e.substring(4, 6) + "." + e.substring(6, 8);
-        endDate.setText("종료일: " + endD);
-
-        price.setText("티켓 가격: " + detail.getPrice());
-
-        link.setText("예매처: " + detail.getTicketLink());
-        String ticketLink = link.getText().toString();
-        SpannableString spannableStr1 = new SpannableString(ticketLink);
-        String word = ticketLink.substring(5);
-        int start = ticketLink.indexOf(word);
-        int end = start + word.length();
-        spannableStr1.setSpan(new ForegroundColorSpan(Color.parseColor("#013ADF")),
-                start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        link.setText(spannableStr1);
-
-        phone.setText("문의 번호: " + detail.getPhone());
-
-        if (detail.getLatitude() != null && detail.getLongitude() != null) {
-            placeAddr.setText("'" + detail.getPlace() + "' 주소: " + detail.getPlaceAddr());
-        } else {
-            placeAddr.setText("'" + detail.getPlace() +"' 주소: 정보 없음");
+                intent2.putExtra("place",dataArray[i].replace("장소 :",""));
+                place.setText(dataArray[i]);
+            }
+            if (dataArray[i].contains("공연시간 :"))
+            {
+                time.setText(dataArray[i]);
+            }
+            if (dataArray[i].contains("관람연령 :"))
+            {
+                age.setText(dataArray[i]);
+            }
+            if (dataArray[i].contains("티켓 가격 :"))
+            {
+                intent2.putExtra("price",dataArray[i].replace("티켓 가격 :",""));
+                ticketprice.setText(dataArray[i]);
+            }
+            if (dataArray[i].contains("공연 출연진 :"))
+            {
+                cast.setText(dataArray[i]);
+            }
+            if (dataArray[i].contains("공연 제작진 :"))
+            {
+                crew.setText(dataArray[i]);
+            }
+            if (dataArray[i].contains("공연 시작일 :"))
+            {
+                start.setText(dataArray[i]);
+            }
+            if (dataArray[i].contains("공연 종료일 :"))
+            {
+                end.setText(dataArray[i]);
+            }
+            if (dataArray[i].contains("소개이미지 :"))
+            {
+                Log.v("image",dataArray[i]);
+                imagelist.add(dataArray[i].replace("소개이미지 :",""));
+            }
         }
-
-        placeUrl.setText("공연장 URL: " + detail.getPlaceUrl());
-        String pUrl = placeUrl.getText().toString();
-        SpannableString spannableStr2 = new SpannableString(pUrl);
-        word = pUrl.substring(9);
-        start = pUrl.indexOf(word);
-        end = start + word.length();
-        spannableStr2.setSpan(new ForegroundColorSpan(Color.parseColor("#013ADF")),
-                start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        placeUrl.setText(spannableStr2);
-
-        Bitmap savedBitmap = imgFileManager.getBitmapFromTemporary(detail.getImageLink());
-        if (savedBitmap != null)
-            image.setImageBitmap(savedBitmap);
+        ImageAdapter adapter = new ImageAdapter(this,imagelist ) ;
+        introduction.setAdapter(adapter);
+        setListViewHeightBasedOnItems(introduction);
     }
-
-    public void onClick(View v) {
-        switch (v.getId()) {
-//            case R.id.btn_add_review:
-//                Intent intent = new Intent(this, AddReviewActivity.class);
-//                intent.putExtra("title", detail.getTitle(false));
-//                startActivity(intent);
-//                break;
-//            case R.id.btn_add_bookmark:
-//                if (btn_bookmark.getText().equals("즐겨찾기")) {
-//                    boolean result = dbManager.addBookmark(detail);
-//                    if (result) {
-//                        Toast.makeText(this, "즐겨찾기 추가 성공", Toast.LENGTH_SHORT).show();
-//                        btn_bookmark.setText("즐겨찾기 해제");
-//                    } else {
-//                        Toast.makeText(this, "즐겨찾기 추가 실패", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    boolean result = dbManager.removeBookmark(detail.getSeq());
-//                    if (result) {
-//                        Toast.makeText(this, "즐겨찾기 해제 성공", Toast.LENGTH_SHORT).show();
-//                        btn_bookmark.setText("즐겨찾기");
-//                    } else {
-//                        Toast.makeText(this, "즐겨찾기 해제 실패", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-
-            case R.id.btn_reservation:
-                Intent intent2 = new Intent(this, Date_reservation.class);
-                intent2.putExtra("title", detail.getTitle(false));
-                intent2.putExtra("price", detail.getPrice());
-                intent2.putExtra("Place", detail.getPlace());
-
-
-                startActivity(intent2);
-                break;
-        }
-
-    }
-
-    // notification 채널 만드는 코드
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = getString(R.string.channel_name);
-            String description = getString(R.string.channel_description);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(getString(R.string.CHANNEL_ID), name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
-
-    OnMapReadyCallback mapReadyCallBack = new OnMapReadyCallback() {
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
-        public void onMapReady(GoogleMap googleMap) {
-            mGoogleMap = googleMap;
+        public boolean onNavigationItemSelected(@NonNull MenuItem item)
+        {
+            switch (item.getItemId())
+            {
+                case R.id.reserve_navigation_1:
 
-            LatLng detailLoc;
-            if (detail.getLatitude() != null && detail.getLongitude() != null) {
-                detailLoc = new LatLng(detail.getLatitude(), detail.getLongitude());
-                mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(detailLoc, 16));
-
-                MarkerOptions options = new MarkerOptions();
-                options.position(detailLoc);
-                options.title(detail.getTitle(false));
-                options.snippet(detail.getPlaceAddr());
-                options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-
-                centerMarker = mGoogleMap.addMarker(options);
-            } else {
-                // 공연장의 위도, 경도 정보가 없을 경우 서울의 중심 좌표가 중심이 됨
-                detailLoc = new LatLng(37.564214, 127.001699);
-                mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(detailLoc, 13));
+                    startActivity(intent1);
+                    return true; case R.id.reserve_navigation_2:
+                        startActivity(intent2);
+                return true;
             }
-
+            return false;
         }
     };
-
 }

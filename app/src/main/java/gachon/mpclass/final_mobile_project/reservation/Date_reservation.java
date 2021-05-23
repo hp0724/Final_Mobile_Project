@@ -47,7 +47,7 @@ public class Date_reservation extends AppCompatActivity {
         if (getprice != null) {
             price.setText(getprice);
         }
-        String getPlace = getIntent().getStringExtra("Place");
+        String getPlace = getIntent().getStringExtra("place");
         Log.d("Tag",getPlace);
         if (getPlace != null) {
             place.setText(getPlace);
