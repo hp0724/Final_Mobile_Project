@@ -97,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         startActivity(intent);
                                     } else {
+                                        loaderLayout.setVisibility(View.GONE);
                                         Toast.makeText(LoginActivity.this, "로그인 오류", Toast.LENGTH_SHORT).show();
                                     }
                                 }

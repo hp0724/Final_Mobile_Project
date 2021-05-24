@@ -201,7 +201,8 @@ public class DetailShowActivity extends AppCompatActivity {
                 case R.id.reserve_navigation_1:
 
                     startActivity(intent1);
-                    return true; case R.id.reserve_navigation_2:
+                    return true;
+                    case R.id.reserve_navigation_2:
                         startActivity(intent2);
                 return true;
             }

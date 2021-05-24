@@ -51,15 +51,16 @@ public class FragmentMypage extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), FirstScreenActivity.class);
-                startActivity(intent);
+                Intent intent1=new Intent(getActivity(), FirstScreenActivity.class);
+                startActivity(intent1);
             }
         });
 
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(),MybookActivity.class);
+                Intent intent2=new Intent(getActivity(),MybookActivity.class);
+                startActivity(intent2);
             }
         });
         return view;
