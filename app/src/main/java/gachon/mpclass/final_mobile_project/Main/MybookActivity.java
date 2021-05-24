@@ -82,9 +82,9 @@ public class MybookActivity extends AppCompatActivity {
                         theater=findViewById(R.id.myBook_performName_name);
                         theater.setText(book_name);
                         place=findViewById(R.id.myBook_theart_addr);
-                        place.setText(book_price);
+                        place.setText(book_place);
                         price=findViewById(R.id.myBook_price_theater);
-                        price.setText(book_place);
+                        price.setText(book_price);
                         date = findViewById(R.id.myBook_date);
                         date.setText(book_date);
 
