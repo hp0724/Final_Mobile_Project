@@ -9,7 +9,7 @@
 
     <LinearLayout android:orientation="horizontal" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_margin="10dp">
 
-    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:fontFamily="@font/cafe24oneprettynight" android:text="-" android:id="@+id/minus" app:backgroundTint="@color/blue" android:background="@drawable/custom_button"/>
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:fontFamily="@font/cafe24oneprettynight" android:text="-" android:id="@+id/minus" app:backgroundTint="@color/blue" android:background="@drawable/custom_button" />
 
     <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:textSize="10pt" android:gravity="center" android:fontFamily="@font/cafe24oneprettynight" android:text="0" android:id="@+id/seat_count" android:layout_weight="1"/>
 

@@ -6,7 +6,7 @@
     <string name="channel_description">Alarm Channel</string>
     <string name="CHANNEL_ID">MY_CHANNEL</string>
     <!--    <string name="google_api_key">AIzaSyBts7N28D1fOV31TR9w_X7xuuomfhfFFxA</string>-->
-<!--        <string name="google_api_key"> AIzaSyAAyjtPkWFj_m3urAZtG8rVfqYDK3t6ElU</string>-->
+    <!--        <string name="google_api_key"> AIzaSyAAyjtPkWFj_m3urAZtG8rVfqYDK3t6ElU</string>-->
 
     <string name="no_address_found">주소를 찾을 수 없습니다.</string>
     <string name="address_found">주소를 찾았습니다.</string>

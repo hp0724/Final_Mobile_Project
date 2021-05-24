@@ -29,8 +29,8 @@ import gachon.mpclass.final_mobile_project.R;
 
 public class Date_reservation extends AppCompatActivity {
 
-    TextView theater, performance, date,price,place;
-    Button time1, calendar,reservation;
+    TextView theater, date,price,place;
+    Button time,seat, calendar,reservation;
     private String getThaeter,getPrice,getPlace,getDate;
     private int Year, Month, Day,hour,min;
 
@@ -47,8 +47,9 @@ public class Date_reservation extends AppCompatActivity {
         place=findViewById(R.id.theart_addr);
         date = findViewById(R.id.date);
         calendar = findViewById(R.id.calender);
-        time1=findViewById(R.id.time_selector);
+        time=findViewById(R.id.time_selector);
         reservation=findViewById(R.id.btn_book);
+        seat = findViewById(R.id.select_seat);
 
 
          getThaeter = getIntent().getStringExtra("title");
@@ -81,10 +82,6 @@ public class Date_reservation extends AppCompatActivity {
             }
         });
 
-        //api로 받아서 극 이름,극장정보,시간 넣기
-       /* performance.setText();
-        theater.setText();
-        time1.setText()*/
 
         //날짜선택
         calendar.setOnClickListener(new View.OnClickListener() {
@@ -94,23 +91,29 @@ public class Date_reservation extends AppCompatActivity {
                 showDate();
             }
         });
-        //시간선택
-        time1.setOnClickListener(new View.OnClickListener() {
+
+        //좌석선택페이지로 이동
+        seat.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Seat_reservation.class);
 
-                today();
-            }
-        });
+                intent.putExtra("date",date.getText().toString());
 
-
-        time1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Seat_reservation.class);
                 startActivity(intent);
             }
         });
+
+
+      /*  //시간선택 페이지로 이동
+        time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Time_reservation.class);
+                startActivity(intent);
+            }
+        });*/
+
 
         //오늘 날짜
         Calendar calendar = Calendar.getInstance();
