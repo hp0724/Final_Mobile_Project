@@ -34,6 +34,8 @@ public class MybookActivity extends AppCompatActivity {
     String book_place=null;
     String book_price=null;
     String book_date=null;
+    String book_time=null;
+    String book_seat=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +79,9 @@ public class MybookActivity extends AppCompatActivity {
                         book_place=document.getData().get("place").toString();
                         book_price =document.getData().get("price").toString();
                         book_date=document.getData().get(("date")).toString();
+                        book_time=document.getData().get(("time")).toString();
+                        book_seat=document.getData().get(("seat")).toString();
+
 
 
                         theater=findViewById(R.id.myBook_performName_name);
@@ -87,6 +92,10 @@ public class MybookActivity extends AppCompatActivity {
                         price.setText(book_price);
                         date = findViewById(R.id.myBook_date);
                         date.setText(book_date);
+                        time=findViewById(R.id.myBook_time);
+                        time.setText(book_time);
+                        seat=findViewById(R.id.myBook_seat);
+                        seat.setText(book_seat);
 
 
                     }

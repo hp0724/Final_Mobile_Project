@@ -61,6 +61,15 @@ public class Seat_reservation extends AppCompatActivity {
             }
         });
 
+        reserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplication(),Date_reservation.class);
+                intent.putExtra("count",count);
+                startActivity(intent);
+            }
+        });
+
     }
 
     //좌석수 받아오기

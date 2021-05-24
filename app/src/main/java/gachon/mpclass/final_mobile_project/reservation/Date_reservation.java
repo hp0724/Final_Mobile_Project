@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,9 +30,9 @@ import gachon.mpclass.final_mobile_project.R;
 
 public class Date_reservation extends AppCompatActivity {
 
-    TextView theater, date,price,place;
+    TextView theater, date,price,place,seat_view,time_view;
     Button time,seat, calendar,reservation;
-    private String getThaeter,getPrice,getPlace,getDate;
+    private String getThaeter,getPrice,getPlace,getDate,getTime,getSeat;
     private int Year, Month, Day,hour,min;
 
 
@@ -39,13 +40,22 @@ public class Date_reservation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_reservation);
+        getTime="18:00";
+        getSeat="1명";
 
-
-
+//textview
         theater=findViewById(R.id.date_performName);
         price=findViewById(R.id.price_theater);
         place=findViewById(R.id.theart_addr);
         date = findViewById(R.id.date);
+
+
+        seat_view=findViewById(R.id.seat);
+        time_view=findViewById(R.id.time);
+        seat_view.setText(getSeat);
+        time_view.setText(getTime);
+
+//        button
         calendar = findViewById(R.id.calender);
         time=findViewById(R.id.time_selector);
         reservation=findViewById(R.id.btn_book);
@@ -83,7 +93,23 @@ public class Date_reservation extends AppCompatActivity {
         });
 
 
+
+        //좌석선택페이지로 이동
+//        seat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), Seat_reservation.class);
+//                startActivity(intent);
+//
+//
+//
+//            }
+//        });
+//        String count=getIntent().getStringExtra("count");
+//        seat.setText(count);
         //날짜선택
+
+
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,29 +118,7 @@ public class Date_reservation extends AppCompatActivity {
             }
         });
 
-        //좌석선택페이지로 이동
-        seat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Seat_reservation.class);
-
-                intent.putExtra("date",date.getText().toString());
-
-                startActivity(intent);
-            }
-        });
-
-
-      /*  //시간선택 페이지로 이동
-        time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Time_reservation.class);
-                startActivity(intent);
-            }
-        });*/
-
-
+//
         //오늘 날짜
         Calendar calendar = Calendar.getInstance();
         Year = calendar.get(Calendar.YEAR);
@@ -122,6 +126,8 @@ public class Date_reservation extends AppCompatActivity {
         Day = calendar.get(Calendar.DATE);
 
         today();
+
+
 
     }
 
@@ -142,6 +148,13 @@ public class Date_reservation extends AppCompatActivity {
 
 
     }
+
+     //달력팝업
+
+
+
+
+
 
     //날짜 설정
     void today() {
@@ -180,6 +193,8 @@ public class Date_reservation extends AppCompatActivity {
         book.put("price",getPrice);
         book.put("place",getPlace);
         book.put("date",getDate);
+        book.put("time",getTime);
+        book.put("seat",getSeat);
 //        book.put("date",date);
 
         //타이틀설정

@@ -166,7 +166,7 @@ public class FragmentSearch extends Fragment {
                         c1.set(Calendar.YEAR,year);
                         startDate=dateformat1.format(c1.getTime());
                       btn_start.setText(String.valueOf(year) +"/"+ String.valueOf(monthOfYear+1) +"/"+ String.valueOf(dayOfMonth));
-                      Toast.makeText(getContext(), startDate, Toast.LENGTH_SHORT).show();
+//                      Toast.makeText(getContext(), startDate, Toast.LENGTH_SHORT).show();
                     }
                 };
 
@@ -184,7 +184,7 @@ public class FragmentSearch extends Fragment {
                         c2.set(Calendar.YEAR,year);
                         endDate=dateformat1.format(c2.getTime());
                         btn_end.setText(String.valueOf(year) +"/"+ String.valueOf(monthOfYear+1) +"/"+ String.valueOf(dayOfMonth));
-                        Toast.makeText(getContext(), endDate, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), endDate, Toast.LENGTH_SHORT).show();
                     }
                 };
         DatePickerDialog eDialog = new DatePickerDialog(getContext(),

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">오늘의 공연</string>
+    <string name="app_name">공연을 부탁해 </string>
     <string name="api_url">http://www.culture.go.kr/openapi/rest/publicperformancedisplays/area?serviceKey=8j34mk%2Bs1%2Fndx0AkafC8kxGknHpk3HTehopMk9PIig4trbdhrG6PslyubpYwy4UWaU0GpUrcAwAvDsVWJkLi8g%3D%3D&amp;rows=50&amp;sido=</string>
     <string name="detail_api_url">http://www.culture.go.kr/openapi/rest/publicperformancedisplays/d/?serviceKey=8j34mk%2Bs1%2Fndx0AkafC8kxGknHpk3HTehopMk9PIig4trbdhrG6PslyubpYwy4UWaU0GpUrcAwAvDsVWJkLi8g%3D%3D&amp;seq=</string>
     <string name="channel_name">My Channel</string>
