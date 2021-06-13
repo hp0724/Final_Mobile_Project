@@ -3,21 +3,16 @@ package gachon.mpclass.final_mobile_project.Show;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.view.LayoutInflater;
+ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-//import gachon.mpclass.final_mobile_project.Manager.DBManager;
-//import gachon.mpclass.final_mobile_project.Manager.ImageFileManager;
-//import gachon.mpclass.final_mobile_project.Manager.NetworkManager;
 import gachon.mpclass.final_mobile_project.R;
 
 public class ShowAdapter extends BaseAdapter {
@@ -28,17 +23,13 @@ public class ShowAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private ArrayList<gachon.mpclass.final_mobile_project.Show.ShowDto> list;
-//    private NetworkManager networkManager = null;
-//    private ImageFileManager imageFileManager = null;
-//    private DBManager dbManager = null;
+
 
     public ShowAdapter(Context context, int resource, ArrayList<gachon.mpclass.final_mobile_project.Show.ShowDto> list) {
         this.context = context;
         this.layout = resource;
         this.list = list;
-//        imageFileManager = new ImageFileManager(context);
-//        networkManager = new NetworkManager(context);
-//        dbManager = new DBManager(context);
+
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -70,8 +61,7 @@ public class ShowAdapter extends BaseAdapter {
             viewHolder.tvPlace = view.findViewById(R.id.tv_place);
             viewHolder.tvRealmName = view.findViewById(R.id.tv_realmName);
             viewHolder.ivImage = view.findViewById(R.id.imageView);
-//            viewHolder.btnBookMark = view.findViewById(R.id.btn_bookmark);
-            view.setTag(viewHolder);
+             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
@@ -83,54 +73,13 @@ public class ShowAdapter extends BaseAdapter {
         viewHolder.tvPlace.setText(dto.getPlace());
         viewHolder.tvRealmName.setText(dto.getRealmName());
 
-//        viewHolder.btnBookMark.setFocusable(false);
-//        if (dbManager.existingBookmark(dto.getSeq())) {
-//            viewHolder.btnBookMark.setText("즐겨찾기 해제");
-//
-//            viewHolder.btnBookMark.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    boolean result = dbManager.removeBookmark(dto.getSeq());
-//                    if (result) {
-//                        Toast.makeText(context, "즐겨찾기 해제 성공", Toast.LENGTH_SHORT).show();
-//                        notifyDataSetChanged();
-//                    } else {
-//                        Toast.makeText(context, "즐겨찾기 해제 실패", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            });
-//        } else {
-//            viewHolder.btnBookMark.setText("즐겨찾기");
-//            viewHolder.btnBookMark.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    boolean result = dbManager.addBookmark(dto);
-//                    if (result) {
-//                        Toast.makeText(context, "즐겨찾기 추가 성공", Toast.LENGTH_SHORT).show();
-//                        notifyDataSetChanged();
-//                    } else {
-//                        Toast.makeText(context, "즐겨찾기 추가 실패", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            });
-//        }
 
         if (dto.getImageLink() == null) {
             viewHolder.ivImage.setImageResource(R.mipmap.ic_launcher);
             return view;
         }
 
-//        Bitmap savedBitmap = imageFileManager.getBitmapFromTemporary(dto.getImageLink());
 
-//        if (savedBitmap != null) {
-//            viewHolder.ivImage.setImageBitmap(savedBitmap);
-//            Log.d(TAG, "Image loading from file");
-//        }
-//        else {
-//            viewHolder.ivImage.setImageResource(R.mipmap.ic_launcher);
-//            new GetImageAsyncTask(viewHolder).execute(dto.getImageLink());
-//            Log.d(TAG, "Image loading from network");
-//        }
 
         return view;
     }
@@ -163,7 +112,6 @@ public class ShowAdapter extends BaseAdapter {
             imageAddress = params[0];
             Bitmap result = null;
 
-//            result = (Bitmap) networkManager.download(imageAddress, true);
 
             return result;
         }
@@ -172,8 +120,7 @@ public class ShowAdapter extends BaseAdapter {
         protected void onPostExecute(Bitmap bitmap) {
             if (bitmap != null) {
                 viewHolder.ivImage.setImageBitmap(bitmap);
-//                imageFileManager.saveBitmapToTemporary(bitmap, imageAddress);
-            }
+             }
 
         }
 

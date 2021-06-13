@@ -17,47 +17,27 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
+
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
-import gachon.mpclass.final_mobile_project.Bookmark.BookmarkActivity;
-import gachon.mpclass.final_mobile_project.Main.MainActivity;
-import gachon.mpclass.final_mobile_project.Main.simpleImageAdapter;
-//import gachon.mpclass.final_mobile_project.Manager.DBManager;
-//import gachon.mpclass.final_mobile_project.Manager.ImageFileManager;
-//import gachon.mpclass.final_mobile_project.Manager.NetworkManager;
+ import gachon.mpclass.final_mobile_project.Main.MainActivity;
+
 import gachon.mpclass.final_mobile_project.R;
-//import gachon.mpclass.final_mobile_project.Review.AddReviewActivity;
-//import gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
-import gachon.mpclass.final_mobile_project.reservation.Date_reservation;
+  import gachon.mpclass.final_mobile_project.reservation.Date_reservation;
 import gachon.mpclass.final_mobile_project.reservation.ReservationActivity;
 import gachon.mpclass.final_mobile_project.useperformancedata.ProcessOpenData;
 

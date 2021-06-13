@@ -80,9 +80,7 @@ public class Date_reservation extends AppCompatActivity {
         }
 
 
-//        book.put("date",date);
-//        book.put("time",time);
-//        book.put("seat",seat);
+
 
 //        팝업창 띄우기
         reservation.setOnClickListener(new View.OnClickListener() {
@@ -94,20 +92,7 @@ public class Date_reservation extends AppCompatActivity {
 
 
 
-        //좌석선택페이지로 이동
-//        seat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), Seat_reservation.class);
-//                startActivity(intent);
-//
-//
-//
-//            }
-//        });
-//        String count=getIntent().getStringExtra("count");
-//        seat.setText(count);
-        //날짜선택
+
 
 
         calendar.setOnClickListener(new View.OnClickListener() {
@@ -162,26 +147,7 @@ public class Date_reservation extends AppCompatActivity {
         getDate=Year + "년 " + (Month + 1) + "월 " + Day + "일";
     }
 
-//    //달력팝업
-//    private void showTime() {
-//        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker view, int hour, int min ) {
-//
-//                today();
-//            }
-//        };
-//
-//        new DatePickerDialog(this,dateSetListener, Year,Month,Day).show();
-//
-//
-//
-//    }
-//
-//    //날짜 설정
-//    void time() {
-//        date.setText(Year + "년 " + (Month + 1) + "월 " + Day + "일");
-//    }
+
 
     void show(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

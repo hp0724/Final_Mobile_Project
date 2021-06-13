@@ -42,7 +42,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import  gachon.mpclass.final_mobile_project.Bookmark.BookmarkActivity;
+//import  gachon.mpclass.final_mobile_project.Bookmark.BookmarkActivity;
 import  gachon.mpclass.final_mobile_project.R;
 //import  gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
 import noman.googleplaces.NRPlaces;
