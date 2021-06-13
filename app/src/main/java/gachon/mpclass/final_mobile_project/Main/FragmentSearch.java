@@ -29,8 +29,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import gachon.mpclass.final_mobile_project.Manager.ImageFileManager;
-import gachon.mpclass.final_mobile_project.Manager.NetworkManager;
+//import gachon.mpclass.final_mobile_project.Manager.ImageFileManager;
+//import gachon.mpclass.final_mobile_project.Manager.NetworkManager;
 import gachon.mpclass.final_mobile_project.R;
 import gachon.mpclass.final_mobile_project.Show.DetailShowActivity;
 import gachon.mpclass.final_mobile_project.Show.ShowDto;

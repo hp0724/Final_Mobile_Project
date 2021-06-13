@@ -21,7 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 import  gachon.mpclass.final_mobile_project.R;
-import gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
+//import gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
 import gachon.mpclass.final_mobile_project.Show.ShowDto;
 
 public class BookmarkMapActivity extends AppCompatActivity {

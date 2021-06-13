@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import gachon.mpclass.final_mobile_project.Manager.ImageFileManager;
+//import gachon.mpclass.final_mobile_project.Manager.ImageFileManager;
 
 import androidx.collection.CircularArray;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +25,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-import gachon.mpclass.final_mobile_project.Manager.ImageFileManager;
+
 import gachon.mpclass.final_mobile_project.R;
 import gachon.mpclass.final_mobile_project.Show.DetailShowActivity;
 

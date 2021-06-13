@@ -15,10 +15,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import gachon.mpclass.final_mobile_project.Manager.DBManager;
+//import gachon.mpclass.final_mobile_project.Manager.DBManager;
 import gachon.mpclass.final_mobile_project.Show.DetailShowActivity;
 import gachon.mpclass.final_mobile_project.R;
-import gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
+//import gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
 import gachon.mpclass.final_mobile_project.Show.ShowAdapter;
 import gachon.mpclass.final_mobile_project.Show.ShowDto;
 
@@ -28,7 +28,7 @@ public class BookmarkActivity extends AppCompatActivity {
 
     ListView lvList;
     ShowAdapter adapter;
-    DBManager manager;
+//    DBManager manager;
 
     ArrayList<ShowDto> list;
 
@@ -38,9 +38,9 @@ public class BookmarkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bookmark);
 
         lvList = findViewById(R.id.bookmark_lvList);
-        manager = new DBManager(this);
+//        manager = new DBManager(this);
 
-        list = manager.getAllBookmarkList();
+//        list = manager.getAllBookmarkList();
 
         adapter = new ShowAdapter(this, R.layout.listview_show, list);
         lvList.setAdapter(adapter);
@@ -49,9 +49,9 @@ public class BookmarkActivity extends AppCompatActivity {
         lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ShowDto dto = manager.getBookmarkById(id);
+//                ShowDto dto = manager.getBookmarkById(id);
                 Intent intent = new Intent(BookmarkActivity.this, DetailShowActivity.class);
-                intent.putExtra("detailDto", dto);
+//                intent.putExtra("detailDto", dto);
                 startActivity(intent);
             }
         });
@@ -77,7 +77,7 @@ public class BookmarkActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        list = manager.getAllBookmarkList();
+//        list = manager.getAllBookmarkList();
         adapter.setList(list);
     }
 }

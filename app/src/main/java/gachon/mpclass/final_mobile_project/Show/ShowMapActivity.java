@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 import gachon.mpclass.final_mobile_project.Bookmark.BookmarkActivity;
 import gachon.mpclass.final_mobile_project.R;
-import gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
+//import gachon.mpclass.final_mobile_project.Review.ListReviewActivity;
 
 public class ShowMapActivity extends AppCompatActivity {
 
